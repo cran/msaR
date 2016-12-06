@@ -1,0 +1,65 @@
+---
+title: "Using msaR"
+author: "Zach Charlop-Powers"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using msaR}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE)
+```
+
+
+## Basic Usage
+
+msaR is a an [htmlwidgets](https://github.com/ramnathv/htmlwidgets) wrapper of the [BioJS MSA viewer](https://github.com/wilzbach/msa) javascript library. msa will pass alignments to the BioJS MSA and has a convenience funtion that will handle the following formats:
+
+1. A character string which is interpreted to be a fastafile (opened by `ape::read.dna`)
+2. A DNAbin class object (ape)
+3. An XStringSet (Biostrings) including "DNAStringSet", "RNAStringSet", "AAStringSet", and "BStringSet"
+4. An XMultiple Alignment (Biostings) including "DNAMultipleAlignment","RNAMultipleAlignment", and"AAMultipleAlignment"
+
+Any of these types of objects can be passed to msaR to create an html widget:
+
+```{r}
+library(msaR)
+
+# read some sequences from a Multiple sequence alignment file.
+seqfile <- system.file("sequences","AHBA.aln", package="msaR")
+
+# display the MSA.
+msaR(seqfile, menu=F, overviewbox = F)
+```
+
+
+## Customized MSAs
+
+```{r}
+msaR(seqfile, menu=F, overviewbox = F)
+```
+
+
+
+## Use as a Shiny widget
+
+msaR can be used as a widget with the [Shiny](http://shiny.rstudio.com/) web application framework.
+
+In ui.R
+```{r, eval=FALSE}
+msaROutput("msa", width="100%")
+```
+
+In server.R
+```{r, eval=FALSE}
+output$msa <- renderMsaR(
+  msaR(seqfile)
+)
+```
+
+
+
