@@ -20,6 +20,8 @@
 #' @param labelname optional. Default \code{TRUE}. Include sequence name?
 #' @param labelid optional. Default \code{TRUE}. Include the labelid?
 #' @param labelNameLength optional. Default \code{100}. Width of the Label Names.
+#' @param overviewboxWidth optional. Default. \code{"auto"}. Can also be "fixed"
+#' @param overviewboxHeight optional. Default. \code{"fixed"}. Can also be an integer value.
 #' @export
 #' @examples 
 #' seqfile <- system.file("sequences","AHBA.aln",package="msaR")
@@ -39,7 +41,9 @@ msaR <- function(msa,
                  labels = TRUE,
                  labelname = TRUE,
                  labelid = TRUE,
-                 labelNameLength = 100
+                 labelNameLength = 100,
+                 overviewboxWidth = "auto",
+                 overviewboxHeight = "fixed"
                  ) {
   config <- list(
     vis=list(
@@ -104,6 +108,8 @@ msaR <- function(msa,
       boxRectHeight=2,
       boxRectWidth=2,
       overviewboxPaddingTop=10,
+      overviewboxWidth = overviewboxWidth,
+      overviewboxHeight = overviewboxHeight,
       # meta cell
       metaGapWidth=35,
       metaIdentWidth=40,

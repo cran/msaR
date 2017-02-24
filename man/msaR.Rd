@@ -8,7 +8,8 @@ msaR(msa, menu = TRUE, width = NULL, height = NULL, rowheight = 15,
   alignmentHeight = 225, overviewbox = TRUE, seqlogo = TRUE,
   conservation = FALSE, markers = TRUE, metacell = FALSE,
   leftheader = TRUE, labels = TRUE, labelname = TRUE, labelid = TRUE,
-  labelNameLength = 100)
+  labelNameLength = 100, overviewboxWidth = "auto",
+  overviewboxHeight = "fixed")
 }
 \arguments{
 \item{msa}{File or BioString  Object representing a multiple Sequence Alignment.}
@@ -42,6 +43,10 @@ msaR(msa, menu = TRUE, width = NULL, height = NULL, rowheight = 15,
 \item{labelid}{optional. Default \code{TRUE}. Include the labelid?}
 
 \item{labelNameLength}{optional. Default \code{100}. Width of the Label Names.}
+
+\item{overviewboxWidth}{optional. Default. \code{"auto"}. Can also be "fixed"}
+
+\item{overviewboxHeight}{optional. Default. \code{"fixed"}. Can also be an integer value.}
 }
 \description{
 Dynamic Multiple Sequence Alignments in R and Shiny

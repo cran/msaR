@@ -1,4 +1,9 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+msaR
+====
+
+[![Travis Build Status](https://travis-ci.org/zachcp/msaR.svg?branch=master)](https://travis-ci.org/zachcp/msaR) [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/msaR)](https://cran.r-project.org/package=msaR)
+
 Basic Usage
 -----------
 
@@ -18,29 +23,11 @@ Any of these types of objects can be passed to msaR to create an html widget. Th
 library(msaR)
 
 # read some sequences from a multiple sequence alignment file and display
-seqfile <- system.file("sequences","AHBA.aln",package="msaR")
+seqfile <- system.file("sequences","AHBA.aln", package="msaR")
 msaR(seqfile)
 ```
 
-### Use as a Shiny widget
-
-msaR can be used as a widget with the [Shiny](http://shiny.rstudio.com/) web application framework.
-
-In ui.R
-
-``` r
-msaROutput("msa", width="100%")
-```
-
-In server.R
-
-``` r
-output$msa <- renderMsaR(
-  msaR(seqfile)
-)
-```
-
-### Contribute
+![](README-unnamed-chunk-2-1.png)
 
 All contributions are welcome! Please feel free to submit a pull request.
 
