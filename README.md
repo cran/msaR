@@ -17,9 +17,6 @@ msaR is a an [htmlwidgets](https://github.com/ramnathv/htmlwidgets) wrapper of t
 Any of these types of objects can be passed to msaR to create an html widget. This package in not on CRAN/Bioconductor and can be installed using [devtools](https://github.com/hadley/devtools). See [the online docs](https://zachcp.github.io/msaR/) for an interactive version of this widget.
 
 ``` r
-# install
-#devtools::install_github('zachcp/msaR')
-
 library(msaR)
 
 # read some sequences from a multiple sequence alignment file and display
@@ -27,7 +24,7 @@ seqfile <- system.file("sequences","AHBA.aln", package="msaR")
 msaR(seqfile)
 ```
 
-![](README-unnamed-chunk-2-1.png)
+![](man/figures/msaR_screenshot.png)
 
 All contributions are welcome! Please feel free to submit a pull request.
 

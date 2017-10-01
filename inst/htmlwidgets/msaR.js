@@ -22,7 +22,9 @@ HTMLWidgets.widget({
 
     // init msa
     var m = instance.msa(opts);
-    var test = m.g.colorscheme.set("scheme", "nucleotide");
+    
+    var cscheme = opts.colorscheme.scheme;
+    var test = m.g.colorscheme.set("scheme", cscheme);
 
     if(x.menu){
       // the menu is independent to the MSA container

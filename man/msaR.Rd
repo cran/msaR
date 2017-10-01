@@ -6,9 +6,9 @@
 \usage{
 msaR(msa, menu = TRUE, width = NULL, height = NULL, rowheight = 15,
   alignmentHeight = 225, overviewbox = TRUE, seqlogo = TRUE,
-  conservation = FALSE, markers = TRUE, metacell = FALSE,
-  leftheader = TRUE, labels = TRUE, labelname = TRUE, labelid = TRUE,
-  labelNameLength = 100, overviewboxWidth = "auto",
+  colorscheme = "nucleotide", conservation = FALSE, markers = TRUE,
+  metacell = FALSE, leftheader = TRUE, labels = TRUE, labelname = TRUE,
+  labelid = TRUE, labelNameLength = 100, overviewboxWidth = "auto",
   overviewboxHeight = "fixed")
 }
 \arguments{
@@ -27,6 +27,9 @@ msaR(msa, menu = TRUE, width = NULL, height = NULL, rowheight = 15,
 \item{overviewbox}{optional. Default \code{TRUE}. Include the overview box?}
 
 \item{seqlogo}{optional. Default \code{TRUE}. Include the seqlogo?}
+
+\item{colorscheme}{optional. Default \code{"nucleotide"}. The color scheme to use. Can be one of the following: 
+"buried","cinema","clustal","clustal2","helix","hydro","lesk","mae","nucleotide","purine","strand","taylor","turn","zappo"}
 
 \item{conservation}{optional. Default \code{TRUE}. Include the conservation widget?}
 
@@ -55,4 +58,3 @@ Dynamic Multiple Sequence Alignments in R and Shiny
 seqfile <- system.file("sequences","AHBA.aln",package="msaR")
 msaR(seqfile)
 }
-

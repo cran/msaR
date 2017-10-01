@@ -11,6 +11,8 @@
 #' @param rowheight Optional. Default \code{20}. Height of a row in the MSA.
 #' @param alignmentHeight Optional. Default \code{225}. Height of the MSA.
 #' @param overviewbox optional. Default \code{TRUE}. Include the overview box?
+#' @param colorscheme optional. Default \code{"nucleotide"}. The color scheme to use. Can be one of the following: 
+#'     "buried","cinema","clustal","clustal2","helix","hydro","lesk","mae","nucleotide","purine","strand","taylor","turn","zappo"
 #' @param seqlogo optional. Default \code{TRUE}. Include the seqlogo?
 #' @param conservation optional. Default \code{TRUE}. Include the conservation widget?
 #' @param markers optional. Default \code{TRUE}. Include the alignment markers? These are the numbers along the top that 
@@ -34,6 +36,7 @@ msaR <- function(msa,
                  alignmentHeight = 225,
                  overviewbox = TRUE,
                  seqlogo = TRUE,
+                 colorscheme="nucleotide",
                  conservation = FALSE,
                  markers = TRUE,
                  metacell = FALSE,
@@ -45,6 +48,11 @@ msaR <- function(msa,
                  overviewboxWidth = "auto",
                  overviewboxHeight = "fixed"
                  ) {
+  
+  if (!colorscheme %in% colorschemes) {
+    stop(paste("Color scheme must be on one of the following: ", colorschemes))
+  }
+  
   config <- list(
     vis=list(
       conserv=conservation,
@@ -77,7 +85,7 @@ msaR <- function(msa,
       manualRendering=FALSE
     ),
     colorscheme=list(
-      scheme="taylor",
+      scheme=colorscheme,
       colorBackground=TRUE,
       showLowerCase=TRUE,
       opacity=0.6
@@ -143,6 +151,23 @@ msaR <- function(msa,
   )
 }
 
+
+colorschemes <- c(
+  "buried",
+  "cinema",
+  "clustal",
+  "clustal2",
+  "helix",
+  "hydro",
+  "lesk",
+  "mae",
+  "nucleotide",
+  "purine",
+  "strand",
+  "taylor",
+  "turn",
+  "zappo"
+)
 
 #' Widget output function for use in Shiny
 #'

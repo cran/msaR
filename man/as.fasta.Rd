@@ -33,4 +33,3 @@ if (requireNamespace("Biostrings", quietly = TRUE)) {
 }
 
 }
-
