@@ -4,12 +4,27 @@
 \alias{msaR}
 \title{msaR}
 \usage{
-msaR(msa, menu = TRUE, width = NULL, height = NULL, rowheight = 15,
-  alignmentHeight = 225, overviewbox = TRUE, seqlogo = TRUE,
-  colorscheme = "nucleotide", conservation = FALSE, markers = TRUE,
-  metacell = FALSE, leftheader = TRUE, labels = TRUE, labelname = TRUE,
-  labelid = TRUE, labelNameLength = 100, overviewboxWidth = "auto",
-  overviewboxHeight = "fixed")
+msaR(
+  msa,
+  menu = TRUE,
+  width = NULL,
+  height = NULL,
+  rowheight = 15,
+  alignmentHeight = 225,
+  overviewbox = TRUE,
+  seqlogo = TRUE,
+  colorscheme = "nucleotide",
+  conservation = FALSE,
+  markers = TRUE,
+  metacell = FALSE,
+  leftheader = TRUE,
+  labels = TRUE,
+  labelname = TRUE,
+  labelid = FALSE,
+  labelNameLength = 100,
+  overviewboxWidth = "auto",
+  overviewboxHeight = "fixed"
+)
 }
 \arguments{
 \item{msa}{File or BioString  Object representing a multiple Sequence Alignment.}
@@ -43,7 +58,7 @@ msaR(msa, menu = TRUE, width = NULL, height = NULL, rowheight = 15,
 
 \item{labelname}{optional. Default \code{TRUE}. Include sequence name?}
 
-\item{labelid}{optional. Default \code{TRUE}. Include the labelid?}
+\item{labelid}{optional. Default \code{FALSE}. Include the labelid?}
 
 \item{labelNameLength}{optional. Default \code{100}. Width of the Label Names.}
 

@@ -15,6 +15,7 @@
 #'  
 #' @importFrom ape as.alignment
 #' @importFrom ape read.dna
+#' @importFrom ape read.FASTA
 #' @export
 #' @rdname as.fasta
 #' @examples 
@@ -22,32 +23,37 @@
 #' as.fasta(seqfile)
 #' help("as.fasta")
 #' 
-#' if (requireNamespace("Biostrings", quietly = TRUE)) {
-#'    seqs <- Biostrings::readDNAStringSet(seqfile)
+#' \dontrun{
+#' if (requireNamespace("Biostrings")) {
+#'    seqs <- readDNAStringSet(seqfile)
 #'    as.fasta(seqs)
+#'  }
 #' }
-#' 
 as.fasta <- function(seqs) {
   
   # try character sequences first
   if (class(seqs)=="character") {
-    try(sequences <- read.dna(seqs, format = "fasta"))
+    try(sequences <- read.FASTA(seqs, type = "dna"))
+    if (exists("sequences")) return(as.fasta(sequences))
+    try(sequences <- read.FASTA(seqs, type = "aa"))
     if (exists("sequences")) return(as.fasta(sequences))
     return("Error reading your fasta file.")
   }
+  #
   
-  # then DNAbin
-  if (class(seqs) == "DNAbin") {
-    aln <- as.alignment(seqs)
+  # then DNAbin and AAbin
+  if (class(seqs) %in% c("AAbin", "DNAbin")) {
+    aln <- as.alignment(as.character(seqs))
     return(paste0(">", aln$nam, "\n", aln$seq, collapse="\n"))
   }
+  
   
   # Then Biostrings
   if (class(seqs) %in% c("DNAStringSet","AAStringSet", "RNAStringSet", "BStringSet", 
                        "DNAMultipleAlignment","RNAMultipleAlignment", "AAMultipleAlignment")) {
     
     # check for Biostring Namespace
-    if (requireNamespace("Biostrings")) {
+    if (requireNamespace("Biostrings", quietly = TRUE)) {
       
       if (class(seqs) %in% c("DNAStringSet", "RNAStringSet", "AAStringSet")) {
         newnames <- paste0(">", names(seqs))

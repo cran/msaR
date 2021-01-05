@@ -15,16 +15,11 @@ knitr::opts_chunk$set(echo = TRUE, message=FALSE)
 ```
 
 
+
 ## Basic Usage
 
-msaR is a an [htmlwidgets](https://github.com/ramnathv/htmlwidgets) wrapper of the [BioJS MSA viewer](https://github.com/wilzbach/msa) javascript library. msa will pass alignments to the BioJS MSA and has a convenience funtion that will handle the following formats:
+msaR is a an [htmlwidgets](https://github.com/ramnathv/htmlwidgets) wrapper of the [BioJS MSA viewer](https://github.com/wilzbach/msa) javascript library. msa will pass alignments to the BioJS MSA. 
 
-1. A character string which is interpreted to be a fastafile (opened by `ape::read.dna`)
-2. A DNAbin class object (ape)
-3. An XStringSet (Biostrings) including "DNAStringSet", "RNAStringSet", "AAStringSet", and "BStringSet"
-4. An XMultiple Alignment (Biostings) including "DNAMultipleAlignment","RNAMultipleAlignment", and"AAMultipleAlignment"
-
-Any of these types of objects can be passed to msaR to create an html widget:
 
 ```{r}
 library(msaR)
@@ -45,9 +40,27 @@ msaR(seqfile, menu=F, overviewbox = F)
 
 
 
+## Protein MSA
+
+```{r}
+
+# read some sequences from a Multiple sequence alignment file.
+proteinseqfile <- system.file("sequences","phosphoproteins.aln", package="msaR")
+
+# loading AA with ape. Can also use Biostrings
+proteins <- ape::read.FASTA(proteinseqfile, type="AA")
+                            
+# note the seqlogo will show up in your widget but 
+# not the vignette static output
+msaR(proteins, menu=F, overviewbox = F,  colorscheme = "clustal")
+
+```
+
+
+
 ## Use as a Shiny widget
 
-msaR can be used as a widget with the [Shiny](http://shiny.rstudio.com/) web application framework.
+msaR can be used as a widget with the [Shiny](https://shiny.rstudio.com/) web application framework.
 
 In ui.R
 ```{r, eval=FALSE}

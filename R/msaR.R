@@ -20,7 +20,7 @@
 #' @param leftheader optional. Default \code{TRUE}. Include the header information.
 #' @param labels optional. Default \code{TRUE}. Include all of the sequence information msa Labels.
 #' @param labelname optional. Default \code{TRUE}. Include sequence name?
-#' @param labelid optional. Default \code{TRUE}. Include the labelid?
+#' @param labelid optional. Default \code{FALSE}. Include the labelid?
 #' @param labelNameLength optional. Default \code{100}. Width of the Label Names.
 #' @param overviewboxWidth optional. Default. \code{"auto"}. Can also be "fixed"
 #' @param overviewboxHeight optional. Default. \code{"fixed"}. Can also be an integer value.
@@ -43,7 +43,7 @@ msaR <- function(msa,
                  leftheader = TRUE,
                  labels = TRUE,
                  labelname = TRUE,
-                 labelid = TRUE,
+                 labelid = FALSE,
                  labelNameLength = 100,
                  overviewboxWidth = "auto",
                  overviewboxHeight = "fixed"
@@ -135,7 +135,7 @@ msaR <- function(msa,
   
   # forward options using x
   x <- list(
-    alignment=as.fasta(msa),
+    sequences=as.sequences(msa),
     config=config,
     menu=menu,
     features=NULL
@@ -162,6 +162,7 @@ colorschemes <- c(
   "lesk",
   "mae",
   "nucleotide",
+  "pid",
   "purine",
   "strand",
   "taylor",

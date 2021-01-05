@@ -1,3 +1,5 @@
+var m;
+
 HTMLWidgets.widget({
 
   name: 'msaR',
@@ -10,15 +12,14 @@ HTMLWidgets.widget({
 
     return {
       msa: msa,
-      el: rootDiv,
-      parse: require("biojs-io-fasta").parse
+      el: rootDiv
     };
   },
 
   renderValue: function(el, x, instance) {
     var opts = x.config;
     opts.el = instance.el;
-    opts.seqs = instance.parse(x.alignment);
+    opts.seqs = x.sequences;
 
     // init msa
     var m = instance.msa(opts);
