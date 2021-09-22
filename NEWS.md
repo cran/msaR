@@ -1,3 +1,7 @@
+# msaR 0.6
+
+- fix a JS bug arising from a change in browser behavior
+
 
 # msaR 0.5
 
